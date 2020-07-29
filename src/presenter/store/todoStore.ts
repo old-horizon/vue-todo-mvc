@@ -1,8 +1,8 @@
 import {FilterCondition} from "@/domain/filterCondition";
-import {computed, ComputedRef, InjectionKey, reactive} from "@vue/composition-api";
 import {Todos} from "@/domain/todos";
 import {AllTodos} from "@/domain/allTodos";
 import {Todo} from "@/domain/todo";
+import {computed, ComputedRef, InjectionKey, reactive} from 'vue';
 
 export interface TodoStore {
 

@@ -2,7 +2,7 @@
     <footer class="footer" v-show="todos.length" v-cloak>
     <span class="todo-count">
       <strong>{{remaining}}</strong>
-      {{remaining | pluralize}} left
+      {{pluralize(remaining)}} left
     </span>
         <ul class="filters">
             <li v-for="filter in filters" :key="filter">
@@ -23,11 +23,11 @@
 </template>
 
 <script lang="ts">
-    import {defineComponent} from "@vue/composition-api";
     import {FilterCondition} from "@/domain/filterCondition";
     import {safeInject} from '.';
     import {todoStoreKey} from '../store/todoStore';
     import {todoUsecaseKey} from "@/usecase/todoUsecase";
+    import {defineComponent} from 'vue';
 
     export default defineComponent({
         setup() {
@@ -38,15 +38,13 @@
                 remaining: store.remaining,
                 filters: [FilterCondition.All, FilterCondition.Active, FilterCondition.Completed],
                 visibility: store.filterCondition,
+                pluralize(n: number) {
+                    return n === 1 ? "item" : "items";
+                },
                 removeCompleted() {
                     usecase.removeCompleted();
                 }
-            }
-        },
-        filters: {
-            pluralize(n: number) {
-                return n === 1 ? "item" : "items";
-            }
+            };
         }
     });
 </script>

@@ -1,8 +1,8 @@
 import {TodoPort} from "@/port/todoPort";
 import {Todo, TodoTitle} from "@/domain/todo";
-import {InjectionKey} from "@vue/composition-api";
 import {TodoStore} from "@/presenter/store/todoStore";
 import {TodoStatus} from "@/domain/todoStatus";
+import {InjectionKey} from 'vue';
 
 export const todoUsecaseKey: InjectionKey<TodoUsecase> = Symbol("TodoUsecase");
 

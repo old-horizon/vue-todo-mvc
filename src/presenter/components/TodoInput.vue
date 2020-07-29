@@ -10,10 +10,10 @@
 </template>
 
 <script lang="ts">
-    import {defineComponent, ref} from "@vue/composition-api";
     import {todoUsecaseKey} from "@/usecase/todoUsecase";
     import {safeInject} from "@/presenter/components/index";
     import {TodoTitle} from '@/domain/todo';
+    import {defineComponent, ref} from 'vue';
 
     export default defineComponent({
         setup() {
@@ -31,7 +31,7 @@
                     usecase.add(new TodoTitle(trimmed));
                     title.value = "";
                 }
-            }
+            };
         }
     })
 </script>

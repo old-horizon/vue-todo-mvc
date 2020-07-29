@@ -1,4 +1,4 @@
-import {inject, InjectionKey} from "@vue/composition-api";
+import {inject, InjectionKey} from 'vue';
 
 export class NotProvidedError extends Error {
 

@@ -11,11 +11,11 @@
 </template>
 
 <script lang="ts">
-    import {defineComponent, ref} from "@vue/composition-api";
     import {Todo, TodoTitle} from "@/domain/todo";
     import {todoStoreKey} from "@/presenter/store/todoStore";
     import {safeInject} from ".";
     import {todoUsecaseKey} from "@/usecase/todoUsecase";
+    import {defineComponent, ref} from 'vue';
 
     interface Props {
         todo: Todo;
@@ -49,7 +49,7 @@
                 cancelEdit() {
                     store.editEnd();
                 }
-            }
+            };
         }
     });
 </script>

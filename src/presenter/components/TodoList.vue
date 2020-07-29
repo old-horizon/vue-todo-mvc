@@ -5,7 +5,6 @@
                 class="toggle-all"
                 type="checkbox"
                 v-model="allDone"
-                @change="onInput"
         >
         <label for="toggle-all"/>
         <ul class="todo-list">
@@ -23,13 +22,13 @@
 </template>
 
 <script lang="ts">
-    import {defineComponent, ref} from "@vue/composition-api";
     import {todoUsecaseKey} from "@/usecase/todoUsecase";
     import {safeInject} from ".";
     import {todoStoreKey} from "@/presenter/store/todoStore";
     import {TodoStatus} from "@/domain/todoStatus";
     import TodoItem from "@/presenter/components/TodoItem.vue";
     import TodoEdit from "@/presenter/components/TodoEdit.vue";
+    import {defineComponent, ref, computed} from 'vue';
 
     export default defineComponent({
         components: {
@@ -46,12 +45,16 @@
                 todos: store.allTodos,
                 filteredTodos: store.filteredTodos,
                 editingTodo: store.editingTodo,
-                allDone,
-                onInput() {
-                    const status = allDone.value ? TodoStatus.Completed : TodoStatus.Active;
-                    usecase.changeAllStatus(status);
-                }
-            }
+                allDone: computed({
+                    get: () => allDone.value,
+                    set: value => {
+                        const status = value ? TodoStatus.Completed : TodoStatus.Active;
+                        usecase.changeAllStatus(status);
+
+                        allDone.value = value;
+                    }
+                })
+            };
         }
     });
 </script>

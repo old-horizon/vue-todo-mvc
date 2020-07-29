@@ -14,11 +14,11 @@
     import {todoStore, todoStoreKey} from "@/presenter/store/todoStore";
     import {TodoUsecase, todoUsecaseKey} from "@/usecase/todoUsecase";
     import {TodoGateway} from "@/gateway/todoGateway";
-    import {defineComponent, provide} from "@vue/composition-api";
     import {TodoStorageDriver} from "@/driver/todoStorageDriver";
     import TodoInput from "@/presenter/components/TodoInput.vue";
     import TodoList from "@/presenter/components/TodoList.vue";
     import {FilterCondition} from "@/domain/filterCondition";
+    import {defineComponent, provide} from 'vue';
 
     interface Props {
         filterCondition: FilterCondition;
